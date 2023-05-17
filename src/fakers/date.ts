@@ -1,19 +1,22 @@
-import { date as yupDate } from 'yup'
+import { AnyObject, date as yupDate, Flags, Maybe } from 'yup'
 import { datatype, faker } from '../install'
-import { MixedFaker } from './mixed'
 import { addFaker, globalOptions } from './base'
-
-import type { DateSchema } from 'yup'
+import { BaseFaker } from 'src'
 
 const MIN = new Date(0).toISOString()
 const MAX = new Date((Math.pow(2, 31) - 1) * 1000).toISOString()
 
-export class DateFaker extends MixedFaker<DateSchema> {
+export class DateFaker<
+  TType extends Maybe<Date> = Date | undefined,
+  TContext = AnyObject,
+  TDefault = undefined,
+  TFlags extends Flags = '',
+> extends BaseFaker<TType, TContext, TDefault, TFlags> {
   doFake() {
     const min =
-      (this.schema.tests.find(test => test.OPTIONS.name === 'min')?.OPTIONS.params?.min as string | undefined) ?? MIN
+      (this.schema.tests.find(test => test.OPTIONS?.name === 'min')?.OPTIONS?.params?.min as string | undefined) ?? MIN
     const max =
-      (this.schema.tests.find(test => test.OPTIONS.name === 'max')?.OPTIONS.params?.max as string | undefined) ?? MAX
+      (this.schema.tests.find(test => test.OPTIONS?.name === 'max')?.OPTIONS?.params?.max as string | undefined) ?? MAX
 
     const result = faker.date.between(min, max)
 

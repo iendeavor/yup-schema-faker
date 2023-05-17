@@ -16,14 +16,15 @@ Key features:
 | [~0.29.x](https://github.com/jquense/yup/tree/v0.29.3)               | [~0.29.x](https://www.npmjs.com/package/@types/yup) | [~2.29.x](https://github.com/iendeavor/yup-schema-faker/tree/v2.29.x) |
 | [>= 0.32.0, <= 0.32.10](https://github.com/jquense/yup/tree/v0.32.9) | N/A                                                 | [~2.32.x](https://github.com/iendeavor/yup-schema-faker/tree/v2.32.x) |
 | [>= 0.32.11, < 1.0.0](https://github.com/jquense/yup/tree/v0.32.11)  | N/A                                                 | [^5.x.x](https://github.com/iendeavor/yup-schema-faker/tree/v5.x.x)   |
+| [^1.0.0](https://github.com/jquense/yup/tree/master)                 | N/A                                                 | [^6.x.x](https://github.com/iendeavor/yup-schema-faker/tree/v6.x.x)   |
 
 ## Getting Started
 
 Install `yup-schema-faker` and its peer dependencies with your favorite package manager:
 
 ```sh
-pnpm add yup@^0.32.11
-pnpm add -D yup-schema-faker@^5.0.0
+pnpm add yup@^1.0.0
+pnpm add -D yup-schema-faker@^6.0.0
 pnpm add -D @faker-js/faker@^7.4.0
 pnpm add -D randexp@^0.5.3
 ```
@@ -141,13 +142,10 @@ yup. Similarly, you can use addFaker to create corresponding fakers for these sc
 Function signature:
 
 ```typescript
-function addFaker<Schema extends AnySchema, Faker>(
-  schemaConstructor: (...arg: any[]) => Schema,
-  fakerConstructor: Faker,
-)
+function addFaker<S extends Schema, Faker>(schemaConstructor: (...arg: any[]) => S, fakerConstructor: Faker)
 ```
 
-Example: [customMixed example](./site/src/views/Custom/custom-mixed.ts)
+Example: [customDate example](./site/src/views/Custom/custom-date.ts)
 
 ### `seed`
 

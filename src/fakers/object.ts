@@ -1,13 +1,17 @@
-import { mixed, object } from 'yup'
+import { AnyObject, Flags, Maybe, mixed, object } from 'yup'
 import { datatype, lorem } from '../install'
-import { MixedFaker } from './mixed'
+import { BaseFaker } from './base'
 import { isReference } from '../util'
 import { addFaker, globalOptions } from './base'
-
-import type { AnySchema, ObjectSchema } from 'yup'
+import type { AnySchema } from 'yup'
 import type { Options } from '../type'
 
-export class ObjectFaker extends MixedFaker<ObjectSchema<any>> {
+export class ObjectFaker<
+  TIn extends Maybe<AnyObject>,
+  TContext = AnyObject,
+  TDefault = any,
+  TFlags extends Flags = '',
+> extends BaseFaker<TIn, TContext, TDefault, TFlags> {
   doFake(options?: Options) {
     const fields = Object.keys(this.schema.fields)
     let result = {}
@@ -31,7 +35,7 @@ export class ObjectFaker extends MixedFaker<ObjectSchema<any>> {
     const noUnknown =
       this.schema.spec.strict ||
       globalOptions.strict ||
-      this.schema.tests.some(test => test.OPTIONS.name === 'noUnknown')
+      this.schema.tests.some(test => test.OPTIONS?.name === 'noUnknown')
     if (noUnknown === false) {
       const unknownFields = Array(datatype.number({ min: 0, max: 5 }))
         .fill(null)

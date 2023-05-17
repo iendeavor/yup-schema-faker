@@ -10,7 +10,7 @@ template(v-for="schemas, type of schemasOfType" :key="type")
 <script lang="ts">
 import { defineComponent } from 'vue'
 import './string-json'
-import './custom-mixed'
+import './custom-date'
 
 export default defineComponent({
   setup() {

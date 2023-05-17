@@ -1,25 +1,28 @@
-import { string } from 'yup'
+import { AnyObject, Flags, Maybe, string } from 'yup'
 import { random, datatype, internet, lorem } from '../install'
 import { randexp } from '../random'
-import { MixedFaker } from './mixed'
+import { BaseFaker } from './base'
 import { fakeDedicatedTest, addFaker, globalOptions } from './base'
 
-import type { StringSchema } from 'yup'
-
-export class StringFaker extends MixedFaker<StringSchema> {
+export class StringFaker<
+  TType extends Maybe<string> = string | undefined,
+  TContext = AnyObject,
+  TDefault = undefined,
+  TFlags extends Flags = '',
+> extends BaseFaker<TType, TContext, TDefault, TFlags> {
   doFake() {
     const min =
-      (this.schema.tests.find(test => test.OPTIONS.name === 'length')?.OPTIONS.params?.length as number) ??
-      (this.schema.tests.find(test => test.OPTIONS.name === 'min')?.OPTIONS.params?.min as number) ??
+      (this.schema.tests.find(test => test.OPTIONS?.name === 'length')?.OPTIONS?.params?.length as number) ??
+      (this.schema.tests.find(test => test.OPTIONS?.name === 'min')?.OPTIONS?.params?.min as number) ??
       undefined
     const max =
-      (this.schema.tests.find(test => test.OPTIONS.name === 'length')?.OPTIONS.params?.length as number) ??
-      (this.schema.tests.find(test => test.OPTIONS.name === 'max')?.OPTIONS.params?.max as number) ??
+      (this.schema.tests.find(test => test.OPTIONS?.name === 'length')?.OPTIONS?.params?.length as number) ??
+      (this.schema.tests.find(test => test.OPTIONS?.name === 'max')?.OPTIONS?.params?.max as number) ??
       undefined
 
     if (
       min === undefined &&
-      this.schema.tests.some(test => test.OPTIONS.name === 'required') === false &&
+      this.schema.tests.some(test => test.OPTIONS?.name === 'required') === false &&
       datatype.float({ min: 0, max: 1 }) > 0.9
     ) {
       return ''
@@ -37,7 +40,7 @@ export class StringFaker extends MixedFaker<StringSchema> {
     result = result.slice(0, max).trim()
 
     const shouldTrim =
-      (this.schema.spec.strict || globalOptions.strict) && this.schema.tests.find(test => test.OPTIONS.name === 'trim')
+      (this.schema.spec.strict || globalOptions.strict) && this.schema.tests.find(test => test.OPTIONS?.name === 'trim')
     if (shouldTrim) {
       result = result.trim() + random.alpha({ count: result.length })
     } else {
@@ -48,11 +51,11 @@ export class StringFaker extends MixedFaker<StringSchema> {
 
     const lowercase =
       (this.schema.spec.strict || globalOptions.strict) &&
-      this.schema.tests.some(test => test.OPTIONS.name === 'string_case') &&
+      this.schema.tests.some(test => test.OPTIONS?.name === 'string_case') &&
       this.schema.isValidSync(result.toLowerCase())
     const uppercase =
       (this.schema.spec.strict || globalOptions.strict) &&
-      this.schema.tests.some(test => test.OPTIONS.name === 'string_case') &&
+      this.schema.tests.some(test => test.OPTIONS?.name === 'string_case') &&
       this.schema.isValidSync(result.toUpperCase())
     result = lowercase ? result.toLowerCase() : uppercase ? result.toUpperCase() : result
 
@@ -76,7 +79,7 @@ export const installStringFaker = () => {
   })
 
   fakeDedicatedTest(string, 'matches', schema => {
-    const regexTest = schema.tests.find(test => test.OPTIONS.name === 'matches')
-    return randexp(regexTest?.OPTIONS.params!.regex as RegExp)
+    const regexTest = schema.tests.find(test => test.OPTIONS?.name === 'matches')
+    return randexp(regexTest?.OPTIONS?.params!.regex as RegExp)
   })
 }

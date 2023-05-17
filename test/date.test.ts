@@ -12,7 +12,7 @@ it('should works with default', () => {
     actual = fake(schema)
   } while (defaultCb.mock.calls.length === 0 && ++count < SAFE_COUNT)
   expect(actual).toBeInstanceOf(Date)
-  expect(actual.toISOString()).toBe(defaultData.toISOString())
+  expect(actual!.toISOString()).toBe(defaultData.toISOString())
 })
 
 it('should works with date', () => {

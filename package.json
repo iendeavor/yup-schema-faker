@@ -1,6 +1,6 @@
 {
   "name": "yup-schema-faker",
-  "version": "5.0.0",
+  "version": "6.0.0-alpha.0",
   "sideEffects": false,
   "description": "Yup-schema-faker will generate you a fake data based on your yup schema.",
   "keywords": [
@@ -63,12 +63,12 @@
     "ts-jest": "^29.0.0",
     "ts-node": "^10.0.0",
     "typescript": "^4.1.3",
-    "yup": "~0.32.11"
+    "yup": "^1.0.0"
   },
   "peerDependencies": {
     "@faker-js/faker": "^7.4.0",
     "randexp": "^0.5.3",
-    "yup": "~0.32.11"
+    "yup": "^1.0.0"
   },
   "engines": {
     "node": ">= 14"
