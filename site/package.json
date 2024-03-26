@@ -14,7 +14,7 @@
     "highlight.js": "^11.0.0",
     "randexp": "^0.5.3",
     "vue": "^3.2.31",
-    "yup": "^0.32.11"
+    "yup": "^1.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
