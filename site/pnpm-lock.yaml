@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@faker-js/faker': ^7.4.0
+  '@faker-js/faker': ^8.0.0
   '@stackblitz/sdk': ^1.6.0
   '@vitejs/plugin-vue': ^4.0.0
   '@vue/compiler-sfc': ^3.2.31
@@ -19,7 +19,7 @@ specifiers:
   yup: ^0.32.11
 
 dependencies:
-  '@faker-js/faker': 7.4.0
+  '@faker-js/faker': 8.4.1
   '@stackblitz/sdk': 1.6.0
   '@vueuse/core': 8.2.0_vue@3.2.31
   highlight.js: 11.7.0
@@ -279,9 +279,9 @@ packages:
     dev: true
     optional: true
 
-  /@faker-js/faker/7.4.0:
-    resolution: {integrity: sha512-xDd3Tvkt2jgkx1LkuwwxpNBy/Oe+LkZBTwkgEFTiWpVSZgQ5sc/LenbHKRHbFl0dq/KFeeq/szyyPtpJRKY0fg==}
-    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
+  /@faker-js/faker/8.4.1:
+    resolution: {integrity: sha512-XQ3cU+Q8Uqmrbf2e0cIC/QN43sTBSC8KF12u29Mb47tWrt2hAgBXSgpZMj4Ao8Uk0iJcU99QsOCaIL8934obCg==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:
