@@ -10,7 +10,7 @@
   "dependencies": {
     "@faker-js/faker": "^7.4.0",
     "@stackblitz/sdk": "^1.6.0",
-    "@vueuse/core": "^8.2.0",
+    "@vueuse/core": "^10.0.0",
     "highlight.js": "^11.0.0",
     "randexp": "^0.5.3",
     "vue": "^3.2.31",
