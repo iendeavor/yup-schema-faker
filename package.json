@@ -54,7 +54,7 @@
     "prettier": "^2.2.1",
     "randexp": "^0.5.3",
     "rimraf": "^4.0.0",
-    "rollup": "^3.0.0",
+    "rollup": "^4.0.0",
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-typescript2": "^0.34.0",
