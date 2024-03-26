@@ -51,7 +51,7 @@
     "husky": "^8.0.0",
     "jest": "^29.0.0",
     "pinst": "^3.0.0",
-    "prettier": "^2.2.1",
+    "prettier": "^3.0.0",
     "randexp": "^0.5.3",
     "rimraf": "^4.0.0",
     "rollup": "^3.0.0",
